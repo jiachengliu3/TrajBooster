@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/SourceSerif4-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/SourceSerif4-Bold.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/SourceSerif4-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/SourceSerif4-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+} 
+
+/* 只修改大标题HERMES的字体为Times New Roman */
+h1[style*="font-size: 8.0em"] {
+    font-family: "Times New Roman", Times, serif !important;
+} 

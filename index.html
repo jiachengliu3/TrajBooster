@@ -1,40 +1,1128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Paper Title</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; line-height: 1.6; }
-    h1, h2 { text-align: center; }
-    pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
-    .links { text-align: center; margin: 20px 0; }
-    .links a { margin: 0 10px; text-decoration: none; font-weight: bold; }
-  </style>
-</head>
-<body>
-  <h1>My Paper Title</h1>
-  <p style="text-align:center;"><b>Authors:</b> Alice, Bob, Charlie</p>
-  <p style="text-align:center;"><b>Conference:</b> NeurIPS 2025</p>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- 在这里添加Font Awesome链接 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- 你现有的样式代码 -->
+    <style type="text/css">
+    .anticon {
+      display: inline-block;
+      color: inherit;
+      font-style: normal;
+      line-height: 0;
+      text-align: center;
+      text-transform: none;
+      vertical-align: -0.125em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .anticon > * {
+      line-height: 1;
+    }
+    .anticon svg {
+      display: inline-block;
+    }
+    .anticon::before {
+      display: none;
+    }
+    .anticon .anticon-icon {
+      display: block;
+    }
+    .anticon[tabindex] {
+      cursor: pointer;
+    }
+    .anticon-spin::before,
+    .anticon-spin {
+      display: inline-block;
+      -webkit-animation: loadingCircle 1s infinite linear;
+      animation: loadingCircle 1s infinite linear;
+    }
+    @-webkit-keyframes loadingCircle {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes loadingCircle {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* 在这里继续添加你的其他CSS样式，比如项目链接的样式 */
+    .header-section {
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .project-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+    
+    .link-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 500;
+        color: white;
+    }
+    
+    .arxiv-btn { background-color: #b31b1b; }
+    .github-btn { background-color: #24292e; }
+    .youtube-btn { background-color: #ff0000; }
+    </style>
+    
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>TrajBooster</title>
+    <link rel="stylesheet" href="./TrajBooster_files/main.css">
+    <link rel="stylesheet" href="./TrajBooster_files/all.min.css">
+    <link rel="stylesheet" href="./TrajBooster_files/font-awesome.min.css">
 
-  <div class="links">
-    <a href="paper.pdf">📄 PDF</a>
-    <a href="https://github.com/yourusername/my-paper-2025">💻 Code</a>
-    <a href="#bibtex">📚 BibTeX</a>
-  </div>
+    <link rel="icon" type="image/png" sizes="512x512" href="TrajBooster_files/logo.png">
 
-  <h2>Abstract</h2>
-  <p>
-    This is where your abstract goes. Summarize your paper in a few sentences so visitors can quickly understand your contribution.
-  </p>
+    <meta property="og:type" content="website">
+    <meta property="og:image:type" content="image/png">
+    <!-- <meta property="og:url" content="https://humanoid-teleop.github.io"> -->
+    <meta property="og:title" content="TrajBooster">
+<!-- 
+    twitter card
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HERMES">
+    <meta name="twitter:creator" content="@ZeYanjie"> -->
 
-  <h2 id="bibtex">BibTeX</h2>
-  <pre>
-@inproceedings{yourname2025mypaper,
-  title={My Paper Title},
-  author={Alice and Bob and Charlie},
-  booktitle={NeurIPS},
-  year={2025}
+    <!-- extra metadata for Slack unfurls -->
+    <!--    <meta name="twitter:label1" content="Published at"/>-->
+    <!--    <meta name="twitter:data1" content="RSS 2024"/>-->
+    <!--    <meta name="twitter:label2" content="Reading time"/>-->
+    <!--    <meta name="twitter:data2" content="10 minutes"/>-->
+
+    <!-- extra metadata — unknown support -->
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Research">
+    <meta property="article:tag" content="Robotics">
+    <meta property="article:tag" content="Machine Learning">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="./TrajBooster_files/tex-mml-chtml.js"></script>
+
+<style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
 }
-  </pre>
-</body>
-</html>
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+/* 确保视频容器尺寸一致 */
+.task-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.task-column {
+  flex: 1;
+  display: flex;
+}
+
+.video_container_wrapper1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.video_container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-clean {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+</style></head>
+<body>
+
+<div class="full-page-image" id="teaser">
+    <div id="video_grid_1" class="video_grid">
+        <div class="video_large_1 video_container">
+            <div class="loading-spinner" style="display: none;"></div>
+            <video id="teaserVideo" autoplay="" muted="" playsinline="" preload="none" loading="lazy">
+                <source id="teaserSource" src="TrajBooster_files/videos/scanbottle.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="video-overlay">
+        <h1 style="font-family: 'Times New Roman', Times, serif; font-size: 6.5vw; line-height: 8vw; background-color: rgba(0, 0, 0, 0.6); padding: 1.2vw 3vw; border-radius: 1.2vw; display: inline-block;">TrajBooster</h1>
+        <h2 style="font-size: 2.45vw; line-height: 3.6vw; background-color: rgba(0, 0, 0, 0.5); padding: 1.1vw 2.3vw; border-radius: 0.8vw; display: inline-block; margin-top: 1.5vw;">
+            Boost cross-embodiment VLA on humanoid whole-body manipulation <br>
+            via Trajectory-Centric Learning
+        </h2>
+        <div class="project-links">
+            <a href="https://arxiv.org/abs/your-paper-id" class="link-button arxiv-btn" target="_blank">
+                <i class="fas fa-file-pdf"></i> arXiv
+            </a>
+            <a href="https://github.com/jiachengliu3/WBC_Deploy" class="link-button github-btn" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://youtube.com/watch?v=your-video-id" class="link-button youtube-btn" target="_blank">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+        </div>
+    </div>
+</div>
+    
+
+<hr class="rounded">
+
+
+<div id="overview">
+
+    <div class="authors" style="font-family: 'Georgia', 'Palatino', serif; font-size: 1.2em; line-height: 1.6; padding: 20px 40px; text-align: center; letter-spacing: 0.02em; margin: 30px auto; max-width: 900px;">
+        <a href="https://jiachengliu3.github.io/" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Jiacheng Liu<sup style="color: #0b0002;">1,2,4*</sup></a>
+         &nbsp;&nbsp; <a href="https://dingpx.github.io/" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Pengxiang Ding<sup style="color: #050001;">1,2*</sup></a>
+         &nbsp;&nbsp; <a href="https://github.com/litlewhitte/litlewhitte" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Qihang Zhou</a><sup style="color: #0a0002;">3,4</sup> 
+         &nbsp;&nbsp; <a href="https://github.com/FurryGreen" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Yuxuan Wu<sup style="color: #050001;">3,4</sup></a>
+         &nbsp;&nbsp; <a href="https://github.com/HDDD16988/Introduction" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Da Huang</a><sup style="color: #0a0002;">3,4</sup> <br> 
+        <a href="https://github.com/JimmyPang02" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Zimian Peng</a><sup style="color: #050001;">1,4</sup> 
+         &nbsp;&nbsp; <a href="https://wnzhang.net/" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Weinan Zhang</a><sup style="color: #050001;">3,4</sup> 
+         &nbsp;&nbsp; <a href="https://wnzhang.net/" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Lixin Yang</a><sup style="color: #050001;">3,4</sup> 
+         &nbsp;&nbsp; <a href="https://milab.westlake.edu.cn/" style="color: #333; text-decoration: none; font-weight: 400;" onmouseover="this.style.textDecoration='underline'; this.style.color='#5e72e4';" onmouseout="this.style.textDecoration='none'; this.style.color='#333';">Donglin Wang</a><sup style="color: #050001;">2,4</sup>
+        
+        <div class="affiliations" style="font-size: 0.85em; margin-top: 15px; color: #666; line-height: 1.4;">
+            <sup>1</sup>Zhejiang University &nbsp;&nbsp;&nbsp; <sup>2</sup>Westlake University &nbsp;&nbsp;&nbsp; <br> <sup>3</sup>Shanghai Jiao Tong University &nbsp;&nbsp;&nbsp; <sup>4</sup>Shanghai Innovation Institue
+        </div>
+        
+        <div class="equal-contribution" style="font-size: 0.75em; margin-top: 8px; color: #777; line-height: 1.3;">
+            <sup>*</sup>Equal Contribution
+        </div> 
+    </div>
+
+<hr class="rounded">
+
+
+
+
+<div id="overview">
+
+    <h1 id="system" style="padding-bottom: 0.1vw;">Abstract</h1>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+        Recent Vision-Language-Action (VLA) models generalize across embodiments but struggle to quickly align with a new robot’s action space when high-quality demonstrations are scarce, especially for bipedal humanoids. We present TrajBooster, a cross-embodiment framework that leverages abundant wheeled-humanoid data to boost bipedal VLA. Our key idea is to use end-effector trajectories as a morphology-agnostic interface. TrajBooster (i) extracts 6D dual-arm end-effector trajectories from real-world wheeled humanoids, (ii) retargets them in simulation to Unitree G1 with a whole-body controller trained via a heuristic-enhanced harmonized online DAgger to lift low-dimensional trajectory references into feasible high-dimensional whole-body actions, and (iii) forms heterogeneous triplets that couple source vision/language with target humanoid-compatible actions to post-pre-train a VLA, followed by only 10 minutes of teleoperation data collection on the target humanoid domain. Deployed on Unitree G1, our policy achieves beyond-tabletop household tasks, enabling squatting, cross-height manipulation, and coordinated whole-body motion with markedly improved robustness and generalization. Results show that TrajBooster allows existing wheeled-humanoid data to efficiently strengthen bipedal humanoid VLA performance, reducing reliance on costly same-embodiment data while enhancing action space understanding and zero-shot skill transfer capabilities.
+    </p>
+
+    <h1 id="expressive-motion">Humanoid whole-body Teleoperation</h1>
+    <div class="task-row">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/teleop/teleop01.mp4" type="video/mp4">
+                    </video>
+                    <!-- <div class="overlay-clean">Clean Plate</div> -->
+                </div>
+            </div>
+        </div>
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/teleop/teleop02.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 id="expressive-motion">Videos acquired via teleoperation</h1>
+    <div class="task-row">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/teleop_data/three01.mp4" type="video/mp4">
+                    </video>
+                    <!-- <div class="overlay-clean">head camera view</div> -->
+                </div>
+            </div>
+        </div>
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/teleop_data/three02.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="rounded">
+
+    <h1 id="expressive-motion">Train Retargeting Model in Isaac Gym</h1>
+    <div class="task-row">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/retargeting/Hello.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">"Hello" in Isaac Gym</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 id="expressive-motion">Action retargeting from Agibot G1 to Unitree G1</h1>
+    <div class="task-row">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/retargeting/retargeting-show01.mp4" type="video/mp4">
+                    </video>
+                    <!-- <div class="overlay-clean">head camera view</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+    <hr class="rounded">
+    
+    <h1 id="system" style="padding-bottom: 0.1vw;">Accelerated Adaptation to Humanoid Action Space</h1>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+       The VLA after post-pre-training (PPT) demonstrates accelerated adaptation to humanoid action space during the post-training phase.
+    </p>
+
+    <div class="task-row" style="margin-top: 2vw;">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <img src="TrajBooster_files/imgs/loss_3curves_comparison_smoothed_shaded_00.png" 
+                        alt="Loss curves comparison" 
+                        style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <div class="task-row">
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/agibot3000fail.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">3K steps (w/o. PPT)</div>
+                </div>
+            </div>
+        </div>
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/agibot-agibot-10k.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">10K steps (w/o. PPT)</div>
+                </div>
+            </div>
+        </div>
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/succeed.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">3K steps (w. PPT)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 
+    
+    <div class="task-row">
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/no_intension.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">3K steps (w/o. PPT)</div>
+                </div>
+            </div>
+        </div>
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/mix60000_fail.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">mixed post-training</div>
+                </div>
+            </div>
+        </div>
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/accelerated_adapt/succeed_mickey.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">3K steps (w. PPT)</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <hr class="rounded">
+    
+    <h1 id="system" style="padding-bottom: 0.1vw;">Trajectory Generalization</h1>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+        <strong>Task:</strong> Picking a Mickey Mouse toy placed on the humanoid's right side, a configuration unseen in teleoperation data (which only used front placements). 
+        <br>
+        <strong>Left:</strong> With post-pre-training, the VLA adapts to grasp from below. 
+        <strong>Right:</strong> Without post-pre-training, the VLA mimics teleoperated motions, approaching from above. 
+    </p>
+    
+
+    
+    <div class="task-row" style="margin-top: 2vw;">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/Trajectory_generalization/ablation_PPT.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <hr class="rounded">
+    
+    <h1 id="system" style="padding-bottom: 0.1vw;">Zero-Shot Skill Generalization</h1>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+        <strong>Zero-Shot Execution of "Pass Water" Task.</strong> 
+        <br>
+        <strong>Left:</strong>  First-person view examples of the pass Water task from the Agibot-World dataset. 
+        <strong>Right:</strong> The post-pre-trained VLA successfully executes this task despite receiving no fine-tuning using real-world teleoperation data for this specific task.
+    </p>
+    
+
+    
+    <div class="task-row" style="margin-top: 2vw;">
+        <div class="task-column">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/zero-shot/pass_water_zero_shot.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr class="rounded">
+    
+    <h1 id="system" style="padding-bottom: 0.8vw;">Method</h1>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+        <strong>TrajBooster pipeline comprises three stages:</strong>
+        <br>
+        <strong>Real Trajectory Extraction:</strong> the process begins with extracting end-effector trajectories from source robots. Rather than directly mapping full-body motions to the target humanoid, TrajBooster utilizes the 6D coordinates of dual-arm end-effectors as the goal, enabling a retargeting model within the Isaac Gym simulator to achieve whole-body motion retargeting by tracking this goal.
+        <br>
+        <strong>Retargeting in Simulation:</strong> the retargeting model is trained with our heuristic-enhanced harmonized online DAgger algorithm for the target humanoid Unitree G1 to track these reference trajectories using whole-body control. Through this process, the humanoid learns to coordinate its joints such that its end-effectors follow the retargeted goals, effectively mapping low-dimensional reference signals into feasible high-dimensional actions. This stage generates a large volume of action data that is compatible with the morphology of the real-world target humanoid.
+        <br>
+        <strong>Finetuning for real humanoid:</strong> using this newly generated data, TrajBooster constructs heterogeneous triplets of the form &lt source vision, source language, target action &gt, which link perceptual inputs with humanoid-compatible behaviors. The resulting synthetic dataset is then used to post-pre-train an existing VLA model. With just 10 minutes of additional real-world teleoperation data &lt target vision, target language, target action &gt, the post-pre-trained VLA is fine-tuned and deployed on the Unitree G1 across a wide spectrum of whole-body manipulation tasks.
+    </p>
+
+
+    
+    <div class="task-row" style="margin-top: 2vw;">
+        <div class="task-column-large">
+            <div class="video_container_wrapper1">
+                <div class="video_container">
+                    <img src="TrajBooster_files/imgs/long_teaser_00.png" 
+                        alt="Loss curves comparison" 
+                        style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- <div class="task-row" style="margin-top: 2vw;">
+        <div class="task-column-large">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/method-with-audio.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+
+    
+
+    <hr class="rounded">
+
+   
+
+    <h1 id="failures">Failure Cases</h1> 
+    <div class="experiment-analysis">
+        <div class="general-observation">
+            <!-- <h3 style="text-align: center;">General Observation on Failure Causes</h3> -->
+            <p>The failures may stem from insufficient depth perception capabilities. Even with the addition of wrist cameras, the model still cannot accurately fold clothes. We believe another critical reason why wrist cameras don't work effectively is that the visual information from wrist cameras in our retargeted data doesn't perfectly match the camera-to-object distances and camera parameters of our actual robot setup.</p>
+        </div>
+
+        <div class="scenario-descriptions">
+            <div class="scenario">
+                <h3 style="text-align: center;">Scenario 1</h4>
+                <p>This represents the two-stage training approach mentioned earlier, built upon the base model. The first stage involves pre-post-training with retargeted data, followed by the second stage where we fine-tune using our teleoperated data for 3,000 steps. Compared to Scenario 4, the robot crouches much lower and spreads both arms wide.</p>
+            </div>
+
+            <div class="scenario">
+                <h3 style="text-align: center;">Scenario 2</h4>
+                <p>This shows a single-stage fine-tuning approach on the base model, mixing both retargeted data and real teleoperated data. Training was conducted for 1 epoch, totaling 60,000 steps. The left hand attempts to assist, but the crouch is insufficient. Both hands exhibit upward turning motions, demonstrating folding-like behaviors. However, due to incorrect depth estimation, the task ultimately fails.</p>
+            </div>
+
+            <div class="scenario">
+                <h3 style="text-align: center;">Scenario 3</h4>
+                <p>Building upon Scenario 2, this version includes an additional 3,000 steps of training with real teleoperated data. Here, the right hand attempts to grasp the clothes.</p>
+            </div>
+
+            <div class="scenario">
+                <h3 style="text-align: center;">Scenario 4</h4>
+                <p>This demonstrates the effect of direct fine-tuning without using retargeted data, trained for 10,000 steps (since we previously found that 3,000 steps resulted in 0% success rate). The model shows virtually no tendency toward clothes folding, with both hands remaining closed. The arm movement trajectory in the first half of the video resembles directly reaching for objects, similar to our teleoperated grasping motions for the Mickey Mouse toy. However, since the model's vision doesn't detect Mickey Mouse at the target location, it doesn't attempt to grasp it (this should be attributed to freezing the backbone during our fine-tuning of GR00T N1.5).</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="task-row">
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/failure-case/01agibot-agibot-3000.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">3K steps (w. PPT)</div>
+                </div>
+            </div>
+        </div>
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/failure-case/02mix60k.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">60K steps (mixed PT)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <div class="task-row">
+        <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/failure-case/03mix60k-3k.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">60K mixed PT + 3K PT</div>
+                </div>
+            </div>
+        </div>
+         <div class="task-column-small">
+            <div class="video_container_wrapper1" style="box-shadow: none;">
+                <div class="video_container">
+                    <video class="content-video" muted="" playsinline="" preload="none" loading="lazy" controls="" autoplay="">
+                        <source src="TrajBooster_files/videos/failure-case/04agibot10k.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay-clean">10K steps (w/o. PPT)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <br>
+<!-- 
+    <hr class="rounded">
+
+    <h1 id="q&amp;a">Q &amp; A</h1>
+
+    <p>
+        <b>Q:</b> Why does temporary pauses occur during the real-time PnP phase?
+        <br>
+        <b>A:</b> Due to the limited control precision of the mobile base, we reduced the integral gain \( K_i \) in PID control to minimize localization error. During the final refinement stage, the pose deviation becomes minimal, causing the integral term to accumulate slowly. As a result, the control signal may fall below the minimum actuation threshold for base movement, leading to temporary pauses in the base's motion.
+    </p>
+    <p>
+        <b>Q:</b> Why does the robot sway left and right during navigation?
+        <br>
+        <b>A:</b> The actions output by ViNT tend to fluctuate laterally. We directly used the outputs from ViNT without applying any smoothing. We found that using the raw action outputs yields better performance when handling sharp turns, intersections, or obstacle avoidance. Therefore, we did not apply additional processing.
+    </p>
+    <p>
+        <b>Q:</b> How does HERMES determine the final target position?
+        <br>
+        <b>A:</b> We first employ the depth camera to capture the target pose. Subsequently, following the same navigation settings as ViNT, we infer actions from the RGB images in the recorded trajectory. Once navigation completes, the robot's pose is refined to the recorded target pose via closed-loop PnP.
+    </p>
+    <p>
+        <b>Q:</b> Does HERMES require camera calibration?
+        <br>
+        <b>A:</b> We do not calibrate the camera; we only ensure that the scene content captured in real-world images roughly matches that in simulation images. In addition, we apply camera view randomization during training to enhance robustness to view changes.
+    </p>
+
+    <hr class="rounded"> -->
+
+
+
+    <!-- <h1 id="acknowledgements">Acknowledgements</h1>
+    <p>
+        We would like to thank all members of the CogAI group and The Movement Lab from Stanford University for their support, Sirui (Eric) Chen for his help with the video shooting and real-world experiments, and Haoyu Xiong for his helpful discussions. We also thank Stanford Robotics Center for providing the experiment space and the MoCap devices.
+        
+        This work is in part supported by ONR MURI N00014-24-1-2748, NSF:FRR 2153854, Stanford HAI, and Stanford Wu-Tsai Human Performance Alliance.
+    </p>
+
+    <h1>BibTeX</h1>
+    <p class="bibtex">@article{ze2025twist,<br>
+        title={TWIST: Teleoperated Whole-Body Imitation System},<br>
+        author= {Yanjie Ze and Zixuan Chen and João Pedro Araújo and Zi-ang Cao and Xue Bin Peng and Jiajun Wu and C. Karen Liu},<br>
+        year= {2025},<br>
+        journal= {arXiv preprint arXiv:2505.02833}<br>
+        }
+    </p> -->
+
+
+    <!-- 中间 -->
+    <p style="text-align: center;">
+        Website modified from <a href="https://yanjieze.com/TWIST/">TWIST</a>.
+    </p>
+
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bibtex = document.querySelector('#overview > .bibtex');
+        
+        if (bibtex) {
+            bibtex.addEventListener('click', function() {
+                const text = this.innerText;
+                navigator.clipboard.writeText(text).then(
+                    function() {
+                        // Create a temporary element to show "Copied!" message
+                        const message = document.createElement('div');
+                        message.textContent = 'Copied!';
+                        message.style.position = 'fixed';
+                        message.style.top = '50%';
+                        message.style.left = '50%';
+                        message.style.transform = 'translate(-50%, -50%)';
+                        message.style.padding = '10px 20px';
+                        message.style.backgroundColor = 'rgba(0,0,0,0.7)';
+                        message.style.color = 'white';
+                        message.style.borderRadius = '5px';
+                        message.style.zIndex = '1000';
+                        
+                        document.body.appendChild(message);
+                        
+                        // Remove the message after 2 seconds
+                        setTimeout(function() {
+                            document.body.removeChild(message);
+                        }, 2000);
+                    },
+                    function() {
+                        console.error('Failed to copy text');
+                    }
+                );
+            });
+        }
+    });
+
+    // List of video sources  
+    const videoSources = [
+        'TrajBooster_files/videos/bgv.mp4',
+    ];
+
+    // Function to get random video source
+    function getRandomVideo() {
+        const randomIndex = Math.floor(Math.random() * videoSources.length);
+        return videoSources[randomIndex];
+    }
+
+    // Function to play random video
+    function playRandomVideo() {
+        const video = document.getElementById('teaserVideo');
+        const source = document.getElementById('teaserSource');
+        const spinner = document.querySelector('.loading-spinner');
+        
+        // Show spinner
+        spinner.style.display = 'block';
+        
+        source.src = getRandomVideo();
+        video.load();
+        
+        // Hide spinner when video starts playing
+        video.addEventListener('playing', function() {
+            spinner.style.display = 'none';
+        }, { once: true });
+        
+        video.play();
+    }
+
+    // Play random video when current video ends
+    document.getElementById('teaserVideo').addEventListener('ended', playRandomVideo);
+
+    // Initial random video
+    playRandomVideo();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Intersection Observer
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    // Set autoplay when video becomes visible
+                    video.autoplay = true;
+                    video.load();
+                    // Stop observing after loading
+                    videoObserver.unobserve(video);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px', // Start loading when video is 50px from viewport
+            threshold: 0
+        });
+
+        // Observe all content videos
+        document.querySelectorAll('.content-video').forEach(video => {
+            videoObserver.observe(video);
+        });
+    });
+</script>
+
+
+
+
+
+
+
+<div id="aiknowledge_pdf_auto_upload" style="position: fixed; top: 8px; right: 8px; z-index: 9999; background-color: white;"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://nchidjaafkcjdgdbbdpkpokodiehhcdg/content-script/style.css"><div data-v-app=""><main class="content-script-container" data-v-f5c2522d="" style="display: none;"><div class="banner neutral-10-b" data-v-f5c2522d=""><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODUiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA4NSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDEwLjEzODJMMy44Mzk3MiAzLjkzMzRDNC42MzIwMyAyLjY1Mjg2IDYuMDIxNzggMS44NzUgNy41MTY4NiAxLjg3NUMxMC45MjI4IDEuODc1IDEyLjk5OTEgNS42NTg2MyAxMS4xOTQgOC41NzU1N0wxMC4zNTcyIDkuOTI3NzVMMTUuMjAxIDE4LjQwMUgxMi43NTg4TDkuMDg3NyAxMS45NzkyTDYuNDMwMTQgMTYuMjczNUgxMC4zNDU2TDExLjQzNCAxOC40MDEzSDUuMTEzODJWMTguNDAwNkw1LjExMzQyIDE4LjQwMTJMMCAxMC4xMzgyWk03Ljg5NjU0IDkuODkwMDdINy44OTM0NEw3Ljg5NDkzIDkuODkyNjdMNS4xMTM4OSAxNC4zODY1TDIuNDg0ODUgMTAuMTM4MUw1LjYyNjcgNS4wNjEwMkM2LjAzNjgyIDQuMzk4MjMgNi43NDM2MyA0LjAwMjY1IDcuNTE3MzMgNC4wMDI2NUM4LjcwMjczIDQuMDAyNjUgOS4yNzU5NCA0LjgxNDAyIDkuNDY3MyA1LjE2Mjc5QzkuNjU4ODQgNS41MTE3NCAxMC4wMzYxIDYuNDMyNjkgOS40MDc5NiA3LjQ0NzhMNy44OTY1NCA5Ljg5MDA3WiIgZmlsbD0iIzFGNzFFMCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIwLjA5NDMgNS40MzI1QzIxLjQ3NDYgNS40MzI1IDIyLjUyODIgNS42ODgwNyAyMy4yNTUxIDYuMTk5MjFDMjMuOTkxMyA2LjcxMDM1IDI0LjM1OTMgNy40OTEgMjQuMzU5MyA4LjU0MTE2QzI0LjM1OTMgOS44NTE1MyAyMy43MTk4IDEwLjczOTEgMjIuNDQwOCAxMS4yMDM3QzIyLjYxNTYgMTEuNDE3NSAyMi44MTM0IDExLjY3NzcgMjMuMDM0MyAxMS45ODQ0QzIzLjI1NTEgMTIuMjkxMSAyMy40ODA2IDEyLjYyNTYgMjMuNzEwNiAxMi45ODgxQzIzLjk0MDcgMTMuMzQxMiAyNC4xNjE1IDEzLjcwODMgMjQuMzczMiAxNC4wODkzQzI0LjU4NDggMTQuNDYxMSAyNC43NzM0IDE0LjgyODIgMjQuOTM5MSAxNS4xOTA2SDIyLjk5MjlDMjIuODE4MSAxNC44NTYxIDIyLjYyOTQgMTQuNTIxNSAyMi40MjcgMTQuMTg2OUMyMi4yMjQ1IDEzLjg0MzEgMjIuMDE3NSAxMy41MTMyIDIxLjgwNTkgMTMuMTk3MkMyMS42MDM0IDEyLjg3MTkgMjEuNDAxIDEyLjU2OTkgMjEuMTk4NSAxMi4yOTExQzIwLjk5NjEgMTIuMDAzIDIwLjgwNzUgMTEuNzQ3NCAyMC42MzI2IDExLjUyNDRDMjAuNTAzOCAxMS41MzM2IDIwLjM5MzQgMTEuNTM4MyAyMC4zMDE0IDExLjUzODNDMjAuMjA5MyAxMS41MzgzIDIwLjEyMTkgMTEuNTM4MyAyMC4wMzkxIDExLjUzODNIMTkuMTk3MVYxNS4xOTA2SDE3LjQ1OFY1LjY2OTQ4QzE3Ljg4MTMgNS41NzY1NSAxOC4zMzIyIDUuNTE2MTQgMTguODEwNyA1LjQ4ODI2QzE5LjI4OTIgNS40NTEwOSAxOS43MTcgNS40MzI1IDIwLjA5NDMgNS40MzI1Wk0yMC4yMTg1IDYuOTUxOThDMTkuODUwNSA2Ljk1MTk4IDE5LjUxIDYuOTY1OTIgMTkuMTk3MSA2Ljk5MzhWMTAuMTE2NEgxOS45NTYzQzIwLjM3OTYgMTAuMTE2NCAyMC43NTIyIDEwLjA5MzIgMjEuMDc0MyAxMC4wNDY3QzIxLjM5NjQgMTAuMDAwMiAyMS42NjMyIDkuOTE2NTkgMjEuODc0OSA5Ljc5NTc3QzIyLjA5NTcgOS42NzQ5NiAyMi4yNjEzIDkuNTEyMzIgMjIuMzcxOCA5LjMwNzg3QzIyLjQ4MjIgOS4xMDM0MSAyMi41Mzc0IDguODQzMTkgMjIuNTM3NCA4LjUyNzIyQzIyLjUzNzQgOC4yMjk4MyAyMi40ODIyIDcuOTc4OSAyMi4zNzE4IDcuNzc0NDVDMjIuMjYxMyA3LjU2OTk5IDIyLjEwMDMgNy40MDczNiAyMS44ODg3IDcuMjg2NTRDMjEuNjg2MiA3LjE2NTczIDIxLjQ0MjQgNy4wODIwOSAyMS4xNTcxIDcuMDM1NjJDMjAuODcxOSA2Ljk3OTg2IDIwLjU1OSA2Ljk1MTk4IDIwLjIxODUgNi45NTE5OFpNMjUuNjE1NiAxMS41ODAxQzI1LjYxNTYgMTAuOTM4OSAyNS43MDc2IDEwLjM3NjYgMjUuODkxNiA5Ljg5MzM1QzI2LjA4NDggOS40MTAwOSAyNi4zMzc5IDkuMDEwNDggMjYuNjUwOCA4LjY5NDVDMjYuOTYzNiA4LjM2OTIzIDI3LjMyMjUgOC4xMjc2IDI3LjcyNzQgNy45Njk2MUMyOC4xMzIyIDcuODAyMzMgMjguNTQ2MyA3LjcxODY5IDI4Ljk2OTYgNy43MTg2OUMyOS45NjM0IDcuNzE4NjkgMzAuNzM2NCA4LjAzMDAyIDMxLjI4ODUgOC42NTI2OEMzMS44NDk4IDkuMjc1MzQgMzIuMTMwNCAxMC4yMDQ3IDMyLjEzMDQgMTEuNDQwN0MzMi4xMzA0IDExLjUzMzYgMzIuMTI1OCAxMS42NDA1IDMyLjExNjYgMTEuNzYxM0MzMi4xMTY2IDExLjg3MjkgMzIuMTEyIDExLjk3NTEgMzIuMTAyOCAxMi4wNjhIMjcuMzQwOUMyNy4zODY5IDEyLjY1MzUgMjcuNTg5MyAxMy4xMDg5IDI3Ljk0ODIgMTMuNDM0MkMyOC4zMTYzIDEzLjc1MDEgMjguODQ1NCAxMy45MDgxIDI5LjUzNTUgMTMuOTA4MUMyOS45NDA0IDEzLjkwODEgMzAuMzA4NSAxMy44NzA5IDMwLjYzOTcgMTMuNzk2NkMzMC45ODAyIDEzLjcyMjMgMzEuMjQ3MSAxMy42NDMzIDMxLjQ0MDMgMTMuNTU5NkwzMS42NjExIDE0LjkzOTdDMzEuNTY5MSAxNC45ODYyIDMxLjQ0MDMgMTUuMDM3MyAzMS4yNzQ3IDE1LjA5M0MzMS4xMTgyIDE1LjEzOTUgMzAuOTM0MiAxNS4xODEzIDMwLjcyMjYgMTUuMjE4NUMzMC41MjAxIDE1LjI2NSAzMC4yOTkzIDE1LjMwMjEgMzAuMDYgMTUuMzNDMjkuODIwOCAxNS4zNTc5IDI5LjU3NjkgMTUuMzcxOCAyOS4zMjg1IDE1LjM3MThDMjguNjkzNiAxNS4zNzE4IDI4LjE0MTQgMTUuMjc4OSAyNy42NzIyIDE1LjA5M0MyNy4yMDI5IDE0Ljg5NzkgMjYuODE2NCAxNC42MzMgMjYuNTEyNyAxNC4yOTg0QzI2LjIwOTEgMTMuOTU0NiAyNS45ODM2IDEzLjU1NSAyNS44MzY0IDEzLjA5OTZDMjUuNjg5MiAxMi42MzQ5IDI1LjYxNTYgMTIuMTI4NCAyNS42MTU2IDExLjU4MDFaTTMwLjQ2MDMgMTAuODI3M0MzMC40NjAzIDEwLjU5NSAzMC40MjgxIDEwLjM3NjYgMzAuMzYzNyAxMC4xNzIyQzMwLjI5OTMgOS45NTg0MSAzMC4yMDI3IDkuNzc3MTkgMzAuMDczOCA5LjYyODQ5QzI5Ljk1NDIgOS40NzA1IDI5LjgwMjQgOS4zNDk2OSAyOS42MTgzIDkuMjY2MDVDMjkuNDQzNSA5LjE3MzExIDI5LjIzMTkgOS4xMjY2NSAyOC45ODM0IDkuMTI2NjVDMjguNzI1OCA5LjEyNjY1IDI4LjUwMDMgOS4xNzc3NiAyOC4zMDcxIDkuMjc5OTlDMjguMTEzOCA5LjM3MjkyIDI3Ljk0ODIgOS40OTgzOCAyNy44MTAyIDkuNjU2MzdDMjcuNjgxNCA5LjgxNDM2IDI3LjU4MDEgOS45OTU1OCAyNy41MDY1IDEwLjJDMjcuNDMyOSAxMC40MDQ1IDI3LjM4MjMgMTAuNjEzNiAyNy4zNTQ3IDEwLjgyNzNIMzAuNDYwM1pNMzYuMjUyNiAxNC4wMDU3QzM2Ljc2NzkgMTQuMDA1NyAzNy4xNTkgMTMuOTc3OCAzNy40MjU5IDEzLjkyMjFWMTIuMDU0MUMzNy4zMzM4IDEyLjAyNjIgMzcuMjAwNCAxMS45OTgzIDM3LjAyNTYgMTEuOTcwNEMzNi44NTA3IDExLjk0MjYgMzYuNjU3NSAxMS45Mjg2IDM2LjQ0NTkgMTEuOTI4NkMzNi4yNjE4IDExLjkyODYgMzYuMDczMiAxMS45NDI2IDM1Ljg4IDExLjk3MDRDMzUuNjk1OSAxMS45OTgzIDM1LjUyNTcgMTIuMDQ5NCAzNS4zNjkzIDEyLjEyMzhDMzUuMjIyIDEyLjE5ODEgMzUuMTAyNCAxMi4zMDUgMzUuMDEwNCAxMi40NDQ0QzM0LjkxODQgMTIuNTc0NSAzNC44NzI0IDEyLjc0MTggMzQuODcyNCAxMi45NDYzQzM0Ljg3MjQgMTMuMzQ1OSAzNC45OTY2IDEzLjYyNDcgMzUuMjQ1IDEzLjc4MjdDMzUuNDkzNSAxMy45MzE0IDM1LjgyOTMgMTQuMDA1NyAzNi4yNTI2IDE0LjAwNTdaTTM2LjExNDYgNy43MTg2OUMzNi42NjY3IDcuNzE4NjkgMzcuMTMxNCA3Ljc4ODM5IDM3LjUwODcgNy45Mjc3OUMzNy44ODYgOC4wNjcxOSAzOC4xODUgOC4yNjIzNSAzOC40MDU5IDguNTEzMjhDMzguNjM1OSA4Ljc2NDIgMzguNzk2OSA5LjA3MDg4IDM4Ljg4ODkgOS40MzMzM0MzOC45OTAyIDkuNzg2NDggMzkuMDQwOCAxMC4xNzY4IDM5LjA0MDggMTAuNjA0M1YxNS4wMjMzQzM4Ljc4MzEgMTUuMDc5MSAzOC4zOTIxIDE1LjE0NDIgMzcuODY3NSAxNS4yMTg1QzM3LjM1MjIgMTUuMzAyMSAzNi43Njc5IDE1LjM0NCAzNi4xMTQ2IDE1LjM0NEMzNS42ODIxIDE1LjM0NCAzNS4yODY0IDE1LjMwMjEgMzQuOTI3NiAxNS4yMTg1QzM0LjU2ODcgMTUuMTM0OSAzNC4yNjA0IDE1LjAwMDEgMzQuMDAyOCAxNC44MTQyQzMzLjc1NDMgMTQuNjI4NCAzMy41NTY1IDE0LjM4NjcgMzMuNDA5MyAxNC4wODkzQzMzLjI3MTMgMTMuNzkyIDMzLjIwMjIgMTMuNDI0OSAzMy4yMDIyIDEyLjk4ODFDMzMuMjAyMiAxMi41Njk5IDMzLjI4MDUgMTIuMjE2NyAzMy40MzY5IDExLjkyODZDMzMuNjAyNSAxMS42NDA1IDMzLjgyMzQgMTEuNDA4MiAzNC4wOTk0IDExLjIzMTZDMzQuMzc1NSAxMS4wNDU3IDM0LjY5MjkgMTAuOTE1NiAzNS4wNTE4IDEwLjg0MTNDMzUuNDE5OSAxMC43NTc2IDM1LjgwMTcgMTAuNzE1OCAzNi4xOTc0IDEwLjcxNThDMzYuMzgxNSAxMC43MTU4IDM2LjU3NDcgMTAuNzI5OCAzNi43NzcxIDEwLjc1NzZDMzYuOTc5NiAxMC43NzYyIDM3LjE5NTggMTAuODEzNCAzNy40MjU5IDEwLjg2OTJWMTAuNTkwNEMzNy40MjU5IDEwLjM5NTIgMzcuNDAyOSAxMC4yMDkzIDM3LjM1NjggMTAuMDMyOEMzNy4zMTA4IDkuODU2MTggMzcuMjI4IDkuNzAyODQgMzcuMTA4NCA5LjU3MjczQzM2Ljk5OCA5LjQzMzMzIDM2Ljg0NjEgOS4zMjY0NSAzNi42NTI5IDkuMjUyMTFDMzYuNDY4OSA5LjE3Nzc2IDM2LjIzNDIgOS4xNDA1OCAzNS45NDkgOS4xNDA1OEMzNS41NjI1IDkuMTQwNTggMzUuMjA4MiA5LjE2ODQ3IDM0Ljg4NjIgOS4yMjQyM0MzNC41NjQxIDkuMjc5OTkgMzQuMzAxOSA5LjM0NTA0IDM0LjA5OTQgOS40MTkzOUwzMy44OTI0IDguMDUzMjVDMzQuMTA0IDcuOTc4OSAzNC40MTIzIDcuOTA0NTYgMzQuODE3MiA3LjgzMDIxQzM1LjIyMiA3Ljc1NTg2IDM1LjY1NDUgNy43MTg2OSAzNi4xMTQ2IDcuNzE4NjlaTTQyLjIwOTEgMTEuNTI0NEM0Mi4yMDkxIDEyLjI2NzggNDIuMzgzOSAxMi44NTMzIDQyLjczMzYgMTMuMjgwOEM0My4wODMzIDEzLjY5OSA0My41NjY0IDEzLjkwODEgNDQuMTgyOSAxMy45MDgxQzQ0LjQ0OTcgMTMuOTA4MSA0NC42NzUyIDEzLjg5ODggNDQuODU5MiAxMy44ODAyQzQ1LjA1MjQgMTMuODUyNCA0NS4yMDg5IDEzLjgyNDUgNDUuMzI4NSAxMy43OTY2VjkuNjE0NTVDNDUuMTgxMyA5LjUxMjMyIDQ0Ljk4MzQgOS40MTkzOSA0NC43MzUgOS4zMzU3NUM0NC40OTU3IDkuMjQyODEgNDQuMjM4MSA5LjE5NjM1IDQzLjk2MiA5LjE5NjM1QzQzLjM1NDcgOS4xOTYzNSA0Mi45MDg0IDkuNDA1NDUgNDIuNjIzMiA5LjgyMzY1QzQyLjM0NzEgMTAuMjQxOSA0Mi4yMDkxIDEwLjgwODggNDIuMjA5MSAxMS41MjQ0Wk00Ni45OTg2IDE0Ljk2NzZDNDYuNjY3NCAxNS4wNjk4IDQ2LjI0ODcgMTUuMTYyNyA0NS43NDI2IDE1LjI0NjRDNDUuMjQ1NyAxNS4zMyA0NC43MjEyIDE1LjM3MTggNDQuMTY5MSAxNS4zNzE4QzQzLjU5ODYgMTUuMzcxOCA0My4wODc5IDE1LjI4MzYgNDIuNjM3IDE1LjEwN0M0Mi4xODYxIDE0LjkzMDQgNDEuNzk5NiAxNC42Nzk1IDQxLjQ3NzUgMTQuMzU0MkM0MS4xNjQ3IDE0LjAxOTYgNDAuOTIwOCAxMy42MiA0MC43NDYgMTMuMTU1NEM0MC41ODA0IDEyLjY4MTQgNDAuNDk3NiAxMi4xNTE3IDQwLjQ5NzYgMTEuNTY2MkM0MC40OTc2IDEwLjk5IDQwLjU2NjYgMTAuNDY5NSA0MC43MDQ2IDEwLjAwNDlDNDAuODUxOCA5LjUzMDkxIDQxLjA2MzUgOS4xMjY2NSA0MS4zMzk1IDguNzkyMDhDNDEuNjE1NiA4LjQ1NzUyIDQxLjk1MTQgOC4yMDE5NSA0Mi4zNDcxIDguMDI1MzdDNDIuNzQyOCA3LjgzOTUgNDMuMTk4MyA3Ljc0NjU3IDQzLjcxMzYgNy43NDY1N0M0NC4wNjMyIDcuNzQ2NTcgNDQuMzcxNSA3Ljc4ODM5IDQ0LjYzODQgNy44NzIwM0M0NC45MDUyIDcuOTU1NjcgNDUuMTM1MyA4LjA0ODYgNDUuMzI4NSA4LjE1MDgzTDQ1LjMzMTggNC4zOTIwOUw0Ni45OTg2IDQuMzczMDVWMTQuOTY3NlpNNTEuNzIwMSA1LjQzMjVDNTMuMTA5NSA1LjQzMjUgNTQuMTcyMyA1LjY4ODA3IDU0LjkwODUgNi4xOTkyMUM1NS42NTM4IDYuNzEwMzUgNTYuMDI2NSA3LjUwOTU5IDU2LjAyNjUgOC41OTY5MkM1Ni4wMjY1IDkuMTYzODIgNTUuOTI1MyA5LjY1MTcyIDU1LjcyMjggMTAuMDYwNkM1NS41Mjk2IDEwLjQ2MDMgNTUuMjQ0MyAxMC43OTAyIDU0Ljg2NzEgMTEuMDUwNEM1NC40ODk4IDExLjMwMTMgNTQuMDI5NyAxMS40ODcyIDUzLjQ4NjggMTEuNjA4QzUyLjk0MzkgMTEuNzI4OCA1Mi4zMjI4IDExLjc4OTIgNTEuNjIzNCAxMS43ODkySDUwLjc1MzlWMTUuMTkwNkg0OS4wMTQ3VjUuNjY5NDhDNDkuNDE5NiA1LjU3NjU1IDQ5Ljg2NTkgNS41MTYxNCA1MC4zNTM2IDUuNDg4MjZDNTAuODUwNSA1LjQ1MTA5IDUxLjMwNiA1LjQzMjUgNTEuNzIwMSA1LjQzMjVaTTUxLjg0NDMgNi45NTE5OEM1MS40MDI2IDYuOTUxOTggNTEuMDM5MSA2Ljk2NTkyIDUwLjc1MzkgNi45OTM4VjEwLjI4MzdINTEuNTk1OEM1Mi40MzMyIDEwLjI4MzcgNTMuMDc3MyAxMC4xNjc1IDUzLjUyODIgOS45MzUxN0M1My45NzkxIDkuNjkzNTUgNTQuMjA0NSA5LjI0MjgxIDU0LjIwNDUgOC41ODI5OEM1NC4yMDQ1IDguMjY3IDU0LjE0NDcgOC4wMDIxNCA1NC4wMjUxIDcuNzg4MzlDNTMuOTA1NSA3LjU3NDY0IDUzLjczOTggNy40MDczNiA1My41MjgyIDcuMjg2NTRDNTMuMzE2NiA3LjE2NTczIDUzLjA2MzUgNy4wODIwOSA1Mi43NjkxIDcuMDM1NjJDNTIuNDgzOCA2Ljk3OTg2IDUyLjE3NTUgNi45NTE5OCA1MS44NDQzIDYuOTUxOThaTTU5LjY1NCAxNC4wMDU3QzYwLjE2OTMgMTQuMDA1NyA2MC41NjAzIDEzLjk3NzggNjAuODI3MiAxMy45MjIxVjEyLjA1NDFDNjAuNzM1MiAxMi4wMjYyIDYwLjYwMTcgMTEuOTk4MyA2MC40MjY5IDExLjk3MDRDNjAuMjUyMSAxMS45NDI2IDYwLjA1ODggMTEuOTI4NiA1OS44NDcyIDExLjkyODZDNTkuNjYzMiAxMS45Mjg2IDU5LjQ3NDUgMTEuOTQyNiA1OS4yODEzIDExLjk3MDRDNTkuMDk3MyAxMS45OTgzIDU4LjkyNyAxMi4wNDk0IDU4Ljc3MDYgMTIuMTIzOEM1OC42MjM0IDEyLjE5ODEgNTguNTAzNyAxMi4zMDUgNTguNDExNyAxMi40NDQ0QzU4LjMxOTcgMTIuNTc0NSA1OC4yNzM3IDEyLjc0MTggNTguMjczNyAxMi45NDYzQzU4LjI3MzcgMTMuMzQ1OSA1OC4zOTc5IDEzLjYyNDcgNTguNjQ2NCAxMy43ODI3QzU4Ljg5NDggMTMuOTMxNCA1OS4yMzA3IDE0LjAwNTcgNTkuNjU0IDE0LjAwNTdaTTU5LjUxNTkgNy43MTg2OUM2MC4wNjggNy43MTg2OSA2MC41MzI3IDcuNzg4MzkgNjAuOTEgNy45Mjc3OUM2MS4yODczIDguMDY3MTkgNjEuNTg2MyA4LjI2MjM1IDYxLjgwNzIgOC41MTMyOEM2Mi4wMzcyIDguNzY0MiA2Mi4xOTgzIDkuMDcwODggNjIuMjkwMyA5LjQzMzMzQzYyLjM5MTUgOS43ODY0OCA2Mi40NDIxIDEwLjE3NjggNjIuNDQyMSAxMC42MDQzVjE1LjAyMzNDNjIuMTg0NSAxNS4wNzkxIDYxLjc5MzQgMTUuMTQ0MiA2MS4yNjg5IDE1LjIxODVDNjAuNzUzNiAxNS4zMDIxIDYwLjE2OTMgMTUuMzQ0IDU5LjUxNTkgMTUuMzQ0QzU5LjA4MzUgMTUuMzQ0IDU4LjY4NzggMTUuMzAyMSA1OC4zMjg5IDE1LjIxODVDNTcuOTcgMTUuMTM0OSA1Ny42NjE4IDE1LjAwMDEgNTcuNDA0MSAxNC44MTQyQzU3LjE1NTcgMTQuNjI4NCA1Ni45NTc4IDE0LjM4NjcgNTYuODEwNiAxNC4wODkzQzU2LjY3MjYgMTMuNzkyIDU2LjYwMzYgMTMuNDI0OSA1Ni42MDM2IDEyLjk4ODFDNTYuNjAzNiAxMi41Njk5IDU2LjY4MTggMTIuMjE2NyA1Ni44MzgyIDExLjkyODZDNTcuMDAzOCAxMS42NDA1IDU3LjIyNDcgMTEuNDA4MiA1Ny41MDA3IDExLjIzMTZDNTcuNzc2OCAxMS4wNDU3IDU4LjA5NDMgMTAuOTE1NiA1OC40NTMxIDEwLjg0MTNDNTguODIxMiAxMC43NTc2IDU5LjIwMzEgMTAuNzE1OCA1OS41OTg4IDEwLjcxNThDNTkuNzgyOCAxMC43MTU4IDU5Ljk3NiAxMC43Mjk4IDYwLjE3ODUgMTAuNzU3NkM2MC4zODA5IDEwLjc3NjIgNjAuNTk3MSAxMC44MTM0IDYwLjgyNzIgMTAuODY5MlYxMC41OTA0QzYwLjgyNzIgMTAuMzk1MiA2MC44MDQyIDEwLjIwOTMgNjAuNzU4MiAxMC4wMzI4QzYwLjcxMjIgOS44NTYxOCA2MC42Mjk0IDkuNzAyODQgNjAuNTA5NyA5LjU3MjczQzYwLjM5OTMgOS40MzMzMyA2MC4yNDc1IDkuMzI2NDUgNjAuMDU0MiA5LjI1MjExQzU5Ljg3MDIgOS4xNzc3NiA1OS42MzU2IDkuMTQwNTggNTkuMzUwMyA5LjE0MDU4QzU4Ljk2MzggOS4xNDA1OCA1OC42MDk2IDkuMTY4NDcgNTguMjg3NSA5LjIyNDIzQzU3Ljk2NTQgOS4yNzk5OSA1Ny43MDMyIDkuMzQ1MDQgNTcuNTAwNyA5LjQxOTM5TDU3LjI5MzcgOC4wNTMyNUM1Ny41MDUzIDcuOTc4OSA1Ny44MTM2IDcuOTA0NTYgNTguMjE4NSA3LjgzMDIxQzU4LjYyMzQgNy43NTU4NiA1OS4wNTU4IDcuNzE4NjkgNTkuNTE1OSA3LjcxODY5Wk02OS4wODg3IDExLjU4MDFDNjkuMDg4NyAxMC44MjczIDY4LjkxODUgMTAuMjQxOSA2OC41NzggOS44MjM2NUM2OC4yNDY3IDkuNDA1NDUgNjcuNzA4NCA5LjE5NjM1IDY2Ljk2MzEgOS4xOTYzNUM2Ni44MDY2IDkuMTk2MzUgNjYuNjQxIDkuMjA1NjQgNjYuNDY2MiA5LjIyNDIzQzY2LjMwMDYgOS4yMzM1MiA2Ni4xMzQ5IDkuMjYxNCA2NS45NjkzIDkuMzA3ODdWMTMuNDc2QzY2LjExNjUgMTMuNTc4MiA2Ni4zMDk4IDEzLjY3NTggNjYuNTQ5IDEzLjc2ODdDNjYuNzk3NCAxMy44NTI0IDY3LjA1OTcgMTMuODk0MiA2Ny4zMzU4IDEzLjg5NDJDNjcuOTQzMSAxMy44OTQyIDY4LjM4NDggMTMuNjg1MSA2OC42NjA4IDEzLjI2NjlDNjguOTQ2MSAxMi44NDg3IDY5LjA4ODcgMTIuMjg2NCA2OS4wODg3IDExLjU4MDFaTTcwLjgwMDIgMTEuNTUyMkM3MC44MDAyIDEyLjEwOTggNzAuNzI2NiAxMi42MjEgNzAuNTc5NCAxMy4wODU3QzcwLjQ0MTQgMTMuNTUwMyA3MC4yMzg5IDEzLjk0OTkgNjkuOTcyMSAxNC4yODQ1QzY5LjcwNTIgMTQuNjE5MSA2OS4zNjkzIDE0Ljg3OTMgNjguOTY0NSAxNS4wNjUyQzY4LjU2ODggMTUuMjUxIDY4LjExNzkgMTUuMzQ0IDY3LjYxMTggMTUuMzQ0QzY3LjI3MTMgMTUuMzQ0IDY2Ljk1ODUgMTUuMzAyMSA2Ni42NzMyIDE1LjIxODVDNjYuMzg4IDE1LjEzNDkgNjYuMTUzMyAxNS4wNDE5IDY1Ljk2OTMgMTQuOTM5N1YxNy43Njk2SDY0LjI5OTJWOC4xMzY4OUM2NC42Mzk2IDguMDQzOTYgNjUuMDU4MyA3Ljk1NTY3IDY1LjU1NTIgNy44NzIwM0M2Ni4wNTIxIDcuNzg4MzkgNjYuNTc2NiA3Ljc0NjU3IDY3LjEyODcgNy43NDY1N0M2Ny42OTkyIDcuNzQ2NTcgNjguMjA5OSA3LjgzNDg2IDY4LjY2MDggOC4wMTE0M0M2OS4xMTE3IDguMTg4MDEgNjkuNDkzNiA4LjQ0MzU4IDY5LjgwNjQgOC43NzgxNEM3MC4xMjg1IDkuMTAzNDEgNzAuMzcyMyA5LjUwMzAzIDcwLjUzOCA5Ljk3N0M3MC43MTI4IDEwLjQ0MTcgNzAuODAwMiAxMC45NjY3IDcwLjgwMDIgMTEuNTUyMlpNNzEuOTMzIDExLjU4MDFDNzEuOTMzIDEwLjkzODkgNzIuMDI1IDEwLjM3NjYgNzIuMjA5IDkuODkzMzVDNzIuNDAyMyA5LjQxMDA5IDcyLjY1NTMgOS4wMTA0OCA3Mi45NjgyIDguNjk0NUM3My4yODEgOC4zNjkyMyA3My42Mzk5IDguMTI3NiA3NC4wNDQ4IDcuOTY5NjFDNzQuNDQ5NyA3LjgwMjMzIDc0Ljg2MzcgNy43MTg2OSA3NS4yODcgNy43MTg2OUM3Ni4yODA4IDcuNzE4NjkgNzcuMDUzOCA4LjAzMDAyIDc3LjYwNTkgOC42NTI2OEM3OC4xNjcyIDkuMjc1MzQgNzguNDQ3OCAxMC4yMDQ3IDc4LjQ0NzggMTEuNDQwN0M3OC40NDc4IDExLjUzMzYgNzguNDQzMiAxMS42NDA1IDc4LjQzNCAxMS43NjEzQzc4LjQzNCAxMS44NzI5IDc4LjQyOTQgMTEuOTc1MSA3OC40MjAyIDEyLjA2OEg3My42NTgzQzczLjcwNDMgMTIuNjUzNSA3My45MDY4IDEzLjEwODkgNzQuMjY1NiAxMy40MzQyQzc0LjYzMzcgMTMuNzUwMSA3NS4xNjI4IDEzLjkwODEgNzUuODUyOSAxMy45MDgxQzc2LjI1NzggMTMuOTA4MSA3Ni43ODE0IDEzLjg3NjggNzcuMTEyNiAxMy44MDI0Qzc3LjQ1MzEgMTMuNzI4MSA3Ny44NzIxIDEzLjYyMjYgNzguMDY1NCAxMy41Mzg5VjE0Ljg5NTZDNzcuOTczNCAxNC45NDIxIDc3Ljc1NzcgMTUuMDM3MyA3Ny41OTIxIDE1LjA5M0M3Ny40MzU2IDE1LjEzOTUgNzcuMjUxNiAxNS4xODEzIDc3LjA0IDE1LjIxODVDNzYuODM3NSAxNS4yNjUgNzYuNjE2NyAxNS4zMDIxIDc2LjM3NzQgMTUuMzNDNzYuMTM4MiAxNS4zNTc5IDc1Ljg5NDMgMTUuMzcxOCA3NS42NDU5IDE1LjM3MThDNzUuMDExIDE1LjM3MTggNzQuNDU4OSAxNS4yNzg5IDczLjk4OTYgMTUuMDkzQzczLjUyMDMgMTQuODk3OSA3My4xMzM4IDE0LjYzMyA3Mi44MzAxIDE0LjI5ODRDNzIuNTI2NSAxMy45NTQ2IDcyLjMwMSAxMy41NTUgNzIuMTUzOCAxMy4wOTk2QzcyLjAwNjYgMTIuNjM0OSA3MS45MzMgMTIuMTI4NCA3MS45MzMgMTEuNTgwMVpNNzYuNzc3NyAxMC44MjczQzc2Ljc3NzcgMTAuNTk1IDc2Ljc0NTUgMTAuMzc2NiA3Ni42ODExIDEwLjE3MjJDNzYuNjE2NyA5Ljk1ODQxIDc2LjUyMDEgOS43NzcxOSA3Ni4zOTEyIDkuNjI4NDlDNzYuMjcxNiA5LjQ3MDUgNzYuMTE5OCA5LjM0OTY5IDc1LjkzNTcgOS4yNjYwNUM3NS43NjA5IDkuMTczMTEgNzUuNTQ5MyA5LjEyNjY1IDc1LjMwMDggOS4xMjY2NUM3NS4wNDMyIDkuMTI2NjUgNzQuODE3NyA5LjE3Nzc2IDc0LjYyNDUgOS4yNzk5OUM3NC40MzEzIDkuMzcyOTIgNzQuMjY1NiA5LjQ5ODM4IDc0LjEyNzYgOS42NTYzN0M3My45OTg4IDkuODE0MzYgNzMuODk3NSA5Ljk5NTU4IDczLjgyMzkgMTAuMkM3My43NTAzIDEwLjQwNDUgNzMuNjk5NyAxMC42MTM2IDczLjY3MjEgMTAuODI3M0g3Ni43Nzc3Wk04NC40MzM0IDkuNDM0NzZDODQuMjk1NCA5LjM4ODMgODMuOTIyNyA5LjI5ODU3IDgzLjY3NDMgOS4yNTIxMUM4My40MzE2IDkuMTk2MzUgODMuMDQzOSA5LjE5NjM1IDgyLjcyMTkgOS4xOTYzNUM4Mi41Mzc4IDkuMTk2MzUgODIuMzQgOS4yMTQ5MyA4Mi4xMjg0IDkuMjUyMTFDODEuOTI1OSA5LjI4OTI4IDgxLjc4MzMgOS4zMjE4MSA4MS43MDA1IDkuMzQ5NjlWMTUuMTkwNkg4MC4wMzAzVjguMjQ4NDFDODAuMzUyNCA4LjEyNzYgODAuNzUyNyA4LjAxNjA4IDgxLjIzMTIgNy45MTM4NUM4MS43MTg5IDcuODAyMzMgODIuMjU3MiA3Ljc0NjU3IDgyLjg0NjEgNy43NDY1N0M4Mi45NTY1IDcuNzQ2NTcgODMuMDg1MyA3Ljc1NTg2IDgzLjIzMjYgNy43NzQ0NUM4My4zNzk4IDcuNzgzNzQgODMuNTI3IDcuODAyMzMgODMuNjc0MyA3LjgzMDIxQzgzLjgyMTUgNy44NDg4IDgzLjk2NDEgNy44NzY2OCA4NC4xMDIxIDcuOTEzODVDODQuMjQwMiA3Ljk0MTczIDg0LjM1MDYgNy45Njk2MSA4NC40MzM0IDcuOTk3NDlWOS40MzQ3NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" data-v-f5c2522d=""><div class="close-popup" data-v-f5c2522d=""><span role="img" aria-label="close" class="anticon anticon-close white-c" data-v-f5c2522d=""><svg focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></span></div></div><!----><div class="user-info neutral-4-b" data-v-f5c2522d=""><!----><div class="user-info-login idea-button blue-6-bg white-c" data-v-f5c2522d="">立即登录</div><div class="current-version" data-v-f5c2522d="">v1.2.5</div></div><!----></main></div></template></div></body><!-- <script src="assets/js/full_screen_video.js"></script> --><!-- <script src="assets/js/carousel.js"></script> --></html>
