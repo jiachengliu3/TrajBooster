@@ -991,33 +991,26 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
 
    
     <br>
-<!-- 
+
     <hr class="rounded">
 
     <h1 id="q&amp;a">Q &amp; A</h1>
 
     <p>
-        <b>Q:</b> Why does temporary pauses occur during the real-time PnP phase?
+        <b>Q:</b> During the post-pre-training phase, the end-effector configuration and camera parameters in the source vision data differ from those of the target Unitree G1 humanoid robot. Does this affect the VLA's performance?
         <br>
-        <b>A:</b> Due to the limited control precision of the mobile base, we reduced the integral gain \( K_i \) in PID control to minimize localization error. During the final refinement stage, the pose deviation becomes minimal, causing the integral term to accumulate slowly. As a result, the control signal may fall below the minimum actuation threshold for base movement, leading to temporary pauses in the base's motion.
-    </p>
-    <p>
-        <b>Q:</b> Why does the robot sway left and right during navigation?
+        <b>A:</b> References 18-21 and limitation/future work section 2 actually discuss methods for addressing visual inconsistencies in end-effector configurations, which can serve as valuable references. However, we found that even without implementing replacement strategies, we could already observe certain levels of task-level generalization. According to references 18-21, if replacement methods were implemented, the generalization capability would likely be further enhanced.
         <br>
-        <b>A:</b> The actions output by ViNT tend to fluctuate laterally. We directly used the outputs from ViNT without applying any smoothing. We found that using the raw action outputs yields better performance when handling sharp turns, intersections, or obstacle avoidance. Therefore, we did not apply additional processing.
-    </p>
-    <p>
-        <b>Q:</b> How does HERMES determine the final target position?
+        
+        On another note, the visual discrepancies between Agibot's configuration—including camera intrinsic and extrinsic parameters—and our local robot setup present a significant challenge. This is precisely why we observed that the hybrid co-training approach was less effective than the two-stage post-training method. The final post-training stage helps mitigate the visual domain gap.
+        
         <br>
-        <b>A:</b> We first employ the depth camera to capture the target pose. Subsequently, following the same navigation settings as ViNT, we infer actions from the RGB images in the recorded trajectory. Once navigation completes, the robot's pose is refined to the recorded target pose via closed-loop PnP.
+        
+        Consequently, we implemented a two-stage post-training methodology where we initially employ post-pre-training to bridge the distributional gap between actions and vision toward the real-world distributions of the target humanoid robot, and subsequently conduct rapid fine-tuning with a limited set of genuine target VLA triplet data.
     </p>
-    <p>
-        <b>Q:</b> Does HERMES require camera calibration?
-        <br>
-        <b>A:</b> We do not calibrate the camera; we only ensure that the scene content captured in real-world images roughly matches that in simulation images. In addition, we apply camera view randomization during training to enhance robustness to view changes.
-    </p>
+    
 
-    <hr class="rounded"> -->
+    <hr class="rounded">
 
 
 
@@ -1026,16 +1019,16 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
         We would like to thank all members of the CogAI group and The Movement Lab from Stanford University for their support, Sirui (Eric) Chen for his help with the video shooting and real-world experiments, and Haoyu Xiong for his helpful discussions. We also thank Stanford Robotics Center for providing the experiment space and the MoCap devices.
         
         This work is in part supported by ONR MURI N00014-24-1-2748, NSF:FRR 2153854, Stanford HAI, and Stanford Wu-Tsai Human Performance Alliance.
-    </p>
+    </p> -->
 
     <h1>BibTeX</h1>
-    <p class="bibtex">@article{ze2025twist,<br>
-        title={TWIST: Teleoperated Whole-Body Imitation System},<br>
-        author= {Yanjie Ze and Zixuan Chen and João Pedro Araújo and Zi-ang Cao and Xue Bin Peng and Jiajun Wu and C. Karen Liu},<br>
+    <p class="bibtex">@article{liu2025trajbooster,<br>
+        title={TrajBooster: Boosting Humanoid Whole-Body Manipulation via Trajectory-Centric Learning},<br>
+        author={Liu, Jiacheng and Ding, Pengxiang and Zhou, Qihang and Wu, Yuxuan and Huang, Da and Peng, Zimian and Xiao, Wei and Zhang, Weinan and Yang, Lixin and Lu, Cewu and others},<br>
+        journal={arXiv preprint arXiv:2509.11839},<br>
         year= {2025},<br>
-        journal= {arXiv preprint arXiv:2505.02833}<br>
         }
-    </p> -->
+    </p>
 
 
     <!-- 中间 -->
