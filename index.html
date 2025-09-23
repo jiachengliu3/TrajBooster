@@ -999,14 +999,8 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
     <p>
         <b>Q:</b> During the post-pre-training phase, the end-effector configuration and camera parameters in the source vision data differ from those of the target Unitree G1 humanoid robot. Does this affect the VLA's performance?
         <br>
-        <b>A:</b> References 18-21 and limitation/future work section 2 actually discuss methods for addressing visual inconsistencies in end-effector configurations, which can serve as valuable references. However, we found that even without implementing replacement strategies, we could already observe certain levels of task-level generalization. According to references 18-21, if replacement methods were implemented, the generalization capability would likely be further enhanced.
-        <br>
-        
-        On another note, the visual discrepancies between Agibot's configuration—including camera intrinsic and extrinsic parameters—and our local robot setup present a significant challenge. This is precisely why we observed that the hybrid co-training approach was less effective than the two-stage post-training method. The final post-training stage helps mitigate the visual domain gap.
-        
-        <br>
-        
-        Consequently, we implemented a two-stage post-training methodology where we initially employ post-pre-training to bridge the distributional gap between actions and vision toward the real-world distributions of the target humanoid robot, and subsequently conduct rapid fine-tuning with a limited set of genuine target VLA triplet data.
+        <b>A:</b> Despite the visual inconsistencies in end-effector configurations and camera parameters between the source data and target Unitree G1 robot, we surprisingly observed certain levels of task-level generalization even without implementing visual replacement strategies.
+        According to references 18-21, if replacement methods were implemented, the generalization capability would likely be further enhanced, which represents a promising direction for our future work.
     </p>
     
 
